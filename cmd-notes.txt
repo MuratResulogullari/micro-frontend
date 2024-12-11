@@ -1,0 +1,32 @@
+ng new main-angular-workspace --create-application=false
+cd main-angular-workspace
+ng generate application shell-app --standalone --routing
+
+npm i @angular-architects/native-federation@17.1.8
+
+ng g @angular-architects/native-federation:init --project shell-app --port 4200 --type dynamic-host
+
+
+ng new remote-angular-workspace --create-application=false
+cd remote-angular-workspace
+ng generate application remote-app --standalone --routing
+
+npm i @angular-architects/native-federation@17.1.8
+
+ng g @angular-architects/native-federation:init --project remote-app --port 4201 --type remote
+
+
+Angular'da Storybook 
+hazır template
+PS C:\Users\murat.resulogullari\source\repos\frontend-framework\remote-angular-workspace\projects> npx degit chromaui/intro-storybook-angular-template storybook-app  
+cd storybook-app
+npm install
+npm run storybook
+
+cd remote-angular-workspace
+ng generate application storybook-app --standalone --routing
+
+ng g @angular-architects/native-federation:init --project storybook-app --port 4202--type remote
+
+\remote-angular-workspace> npx storybook@latest init
+\remote-angular-workspace> ng run storybook-app:storybook
